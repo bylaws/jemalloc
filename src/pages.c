@@ -40,6 +40,14 @@ thp_mode_t init_system_thp_mode;
 /* Runtime support for lazy purge. Irrelevant when !pages_can_purge_lazy. */
 static bool pages_can_purge_lazy_runtime = true;
 
+typedef void* (*mmap_hook_type)(
+	void *addr, size_t length, int prot, int flags,
+	int fd, off_t offset);
+typedef int (*munmap_hook_type)(void *addr, size_t length);
+
+JEMALLOC_EXPORT mmap_hook_type __mmap_hook = mmap;
+JEMALLOC_EXPORT munmap_hook_type __munmap_hook = munmap;
+
 /******************************************************************************/
 /*
  * Function prototypes for static functions that are referenced prior to
@@ -76,7 +84,7 @@ os_pages_map(void *addr, size_t size, size_t alignment, bool *commit) {
 	{
 		int prot = *commit ? PAGES_PROT_COMMIT : PAGES_PROT_DECOMMIT;
 
-		ret = mmap(addr, size, prot, mmap_flags, -1, 0);
+		ret = __mmap_hook(addr, size, prot, mmap_flags, -1, 0);
 	}
 	assert(ret != NULL);
 
@@ -132,7 +140,7 @@ os_pages_unmap(void *addr, size_t size) {
 #ifdef _WIN32
 	if (VirtualFree(addr, 0, MEM_RELEASE) == 0)
 #else
-	if (munmap(addr, size) == -1)
+	if (__munmap_hook(addr, size) == -1)
 #endif
 	{
 		char buf[BUFERROR_BUF];
@@ -201,7 +209,7 @@ pages_map(void *addr, size_t size, size_t alignment, bool *commit) {
 			flags |= MAP_ALIGNED(alignment_bits - 1);
 		}
 
-		void *ret = mmap(addr, size, prot, flags, -1, 0);
+		void *ret = __mmap_hook(addr, size, prot, flags, -1, 0);
 		if (ret == MAP_FAILED) {
 			ret = NULL;
 		}
@@ -260,7 +268,7 @@ pages_commit_impl(void *addr, size_t size, bool commit) {
 #else
 	{
 		int prot = commit ? PAGES_PROT_COMMIT : PAGES_PROT_DECOMMIT;
-		void *result = mmap(addr, size, prot, mmap_flags | MAP_FIXED,
+		void *result = __mmap_hook(addr, size, prot, mmap_flags | MAP_FIXED,
 		    -1, 0);
 		if (result == MAP_FAILED) {
 			return true;
