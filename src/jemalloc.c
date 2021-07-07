@@ -3303,7 +3303,6 @@ int __posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 #    undef PREALIAS
 #    undef ALIAS
 #  endif
-#endif
 
 /*
  * End non-standard override functions.
