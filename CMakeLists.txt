@@ -55,7 +55,7 @@ function(AddLibrary Name Type)
   set_property(TARGET ${Name} PROPERTY C_STANDARD 11)
   set_property(TARGET ${Name} PROPERTY CXX_STANDARD 17)
 
-  target_link_libraries(${Name} m stdc++ pthread dl)
+  target_link_libraries(${Name} pthread)
   set_target_properties(${Name} PROPERTIES OUTPUT_NAME FEX_jemalloc)
 
   target_include_directories(${Name} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
@@ -66,7 +66,4 @@ function(AddLibrary Name Type)
   target_compile_options(${Name} PRIVATE -fvisibility=hidden)
 endfunction()
 
-AddLibrary(${PROJECT_NAME} STATIC)
-AddLibrary(${PROJECT_NAME}_shared SHARED)
-
-install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_shared)
+AddLibrary(${PROJECT_NAME} OBJECT)

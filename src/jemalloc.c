@@ -2973,7 +2973,6 @@ JEMALLOC_EXPORT void *(*__memalign_hook)(size_t alignment, size_t size) =
     je_memalign;
 #  endif
 
-#  ifdef CPU_COUNT
 /*
  * To enable static linking with glibc, the libc specific malloc interface must
  * be implemented also, so none of glibc's malloc.o functions are added to the
@@ -3006,7 +3005,6 @@ int __posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 #    undef PREALIAS
 #    undef ALIAS
 #  endif
-#endif
 
 /*
  * End non-standard override functions.
