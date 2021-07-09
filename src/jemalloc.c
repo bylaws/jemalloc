@@ -3305,6 +3305,10 @@ int __posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 JEMALLOC_EXPORT size_t __malloc_usable_size(void *ptr) {
   return je_malloc_usable_size(ptr);
 }
+JEMALLOC_EXPORT size_t malloc_usable_size(void *ptr) {
+  return je_malloc_usable_size(ptr);
+}
+
 #    undef PREALIAS
 #    undef ALIAS
 #  endif
