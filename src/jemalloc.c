@@ -3007,6 +3007,7 @@ void *valloc(size_t size) PREALIAS(je_valloc);
 #    endif
 #    ifdef JEMALLOC_OVERRIDE___POSIX_MEMALIGN
 int __posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
+int posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 #    endif
 
 void *aligned_alloc(size_t a, size_t s) PREALIAS(je_aligned_alloc);
