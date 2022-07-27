@@ -3763,6 +3763,24 @@ je_malloc_usable_size(JEMALLOC_USABLE_SIZE_CONST void *ptr) {
 	return ret;
 }
 
+JEMALLOC_EXPORT int JEMALLOC_NOTHROW
+je_is_known_allocation(void* ptr) {
+	int ret = 0;
+	tsdn_t *tsdn = tsdn_fetch();
+
+	assert(malloc_initialized() || IS_INITIALIZER);
+
+	tsdn = tsdn_fetch();
+	check_entry_exit_locking(tsdn);
+
+	if (likely(ptr != NULL)) {
+		ret = ivsalloc(tsdn, ptr);
+	}
+
+	check_entry_exit_locking(tsdn);
+	return ret;
+}
+
 /*
  * End non-standard functions.
  */
