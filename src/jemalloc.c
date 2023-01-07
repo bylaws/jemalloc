@@ -3322,6 +3322,7 @@ JEMALLOC_EXPORT size_t malloc_usable_size(void *ptr) {
 #    undef PREALIAS
 #    undef ALIAS
 #  endif
+#endif
 
 /*
  * End non-standard override functions.

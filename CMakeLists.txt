@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 set (PROJECT_NAME FEX_jemalloc)
 project(${PROJECT_NAME}
-  VERSION 5.2.1
+  VERSION 5.3.0
   LANGUAGES C CXX)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -26,16 +26,13 @@ src/div.c
 src/extent.c
 src/extent_dss.c
 src/extent_mmap.c
-src/hash.c
 src/hook.c
 src/large.c
 src/log.c
 src/malloc_io.c
 src/mutex.c
-src/mutex_pool.c
 src/nstime.c
 src/pages.c
-src/prng.c
 src/prof.c
 src/rtree.c
 src/safety_check.c
@@ -48,6 +45,35 @@ src/ticker.c
 src/tsd.c
 src/witness.c
 src/jemalloc_cpp.cpp
+src/pa.c
+src/pac.c
+src/eset.c
+src/edata.c
+src/sec.c
+src/decay.c
+src/hpa_hooks.c
+src/pa_extra.c
+src/ehooks.c
+src/inspect.c
+src/emap.c
+src/san.c
+src/prof_data.c
+src/counter.c
+src/cache_bin.c
+src/thread_event.c
+src/fxp.c
+src/ecache.c
+src/edata_cache.c
+src/pai.c
+src/exp_grow.c
+src/hpa.c
+src/hpdata.c
+src/psset.c
+src/peak_event.c
+src/buf_writer.c
+src/prof_recent.c
+src/san_bump.c
+src/bin_info.c
 )
 
 function(AddLibrary Name Type)
