@@ -3307,18 +3307,15 @@ void *valloc(size_t size) PREALIAS(je_valloc);
 int __posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 int posix_memalign(void** r, size_t a, size_t s) PREALIAS(je_posix_memalign);
 #    endif
-
-void *aligned_alloc(size_t a, size_t s) PREALIAS(je_aligned_alloc);
-
+#    ifdef JEMALLOC_OVERRIDE___MALLOC_USABLE_SIZE
 // If we replace libc malloc and an application calls the malloc_usable_size then we can get a crash
 // Symbol doesn't alias exactly so just wrap it
-JEMALLOC_EXPORT size_t __malloc_usable_size(void *ptr) {
-  return je_malloc_usable_size(ptr);
-}
-JEMALLOC_EXPORT size_t malloc_usable_size(void *ptr) {
-  return je_malloc_usable_size(ptr);
-}
-
+size_t __malloc_usable_size(void *ptr) PREALIAS(je_malloc_usable_size);
+size_t malloc_usable_size(void *ptr) PREALIAS(je_malloc_usable_size);
+#    endif
+#    ifdef JEMALLOC_OVERRIDE___ALIGNED_ALLOC
+void *aligned_alloc(size_t a, size_t s) PREALIAS(je_aligned_alloc);
+#    endif
 #    undef PREALIAS
 #    undef ALIAS
 #  endif

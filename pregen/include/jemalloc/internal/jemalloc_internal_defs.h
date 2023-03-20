@@ -13,14 +13,15 @@
  * Define overrides for non-standard allocator-related functions if they are
  * present on the system.
  */
-#define JEMALLOC_OVERRIDE___LIBC_CALLOC 
-#define JEMALLOC_OVERRIDE___LIBC_FREE 
-#define JEMALLOC_OVERRIDE___LIBC_MALLOC 
-#define JEMALLOC_OVERRIDE___LIBC_MEMALIGN 
-#define JEMALLOC_OVERRIDE___LIBC_REALLOC 
-#define JEMALLOC_OVERRIDE___LIBC_VALLOC 
-#define JEMALLOC_OVERRIDE___POSIX_MEMALIGN
-
+/* #undef JEMALLOC_OVERRIDE___LIBC_CALLOC */
+/* #undef JEMALLOC_OVERRIDE___LIBC_FREE */
+/* #undef JEMALLOC_OVERRIDE___LIBC_MALLOC */
+/* #undef JEMALLOC_OVERRIDE___LIBC_MEMALIGN */
+/* #undef JEMALLOC_OVERRIDE___LIBC_REALLOC */
+/* #undef JEMALLOC_OVERRIDE___LIBC_VALLOC */
+/* #undef JEMALLOC_OVERRIDE___POSIX_MEMALIGN */
+/* #undef JEMALLOC_OVERRIDE___MALLOC_USABLE_SIZE */
+/* #undef JEMALLOC_OVERRIDE___ALIGNED_ALLOC */
 /*
  * JEMALLOC_PRIVATE_NAMESPACE is used as a prefix for all library-private APIs.
  * For shared libraries, symbol visibility mechanisms prevent these symbols

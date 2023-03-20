@@ -44,7 +44,6 @@ src/test_hooks.c
 src/ticker.c
 src/tsd.c
 src/witness.c
-src/jemalloc_cpp.cpp
 src/pa.c
 src/pac.c
 src/eset.c
