@@ -691,7 +691,7 @@ case "${host}" in
 	dnl syscall(2) and secure_getenv(3) are exposed by _GNU_SOURCE.
 	JE_APPEND_VS(CPPFLAGS, -D_GNU_SOURCE)
 	abi="elf"
-	glibc="1"
+	glibc="0"
 	AC_DEFINE([JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS], [ ], [ ])
 	AC_DEFINE([JEMALLOC_HAS_ALLOCA_H], [ ], [ ])
 	AC_DEFINE([JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY], [ ], [ ])
@@ -881,7 +881,7 @@ JE_COMPILABLE([format(gnu_printf, ...) attribute], [#include <stdlib.h>],
               [je_cv_format_gnu_printf])
 JE_CFLAGS_RESTORE()
 if test "x${je_cv_format_gnu_printf}" = "xyes" ; then
-  AC_DEFINE([JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF], [ ], [ ])
+  # AC_DEFINE([JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF], [ ], [ ])
 fi
 dnl Check for format(printf, ...) attribute support.
 JE_CFLAGS_SAVE()
@@ -1405,7 +1405,7 @@ if test "x$zero_realloc_default_free" = "x1" ; then
 fi
 
 dnl Enable allocation from DSS if supported by the OS.
-have_dss="1"
+have_dss="0"
 dnl Check whether the BSD/SUSv1 sbrk() exists.  If not, disable DSS support.
 AC_CHECK_FUNC([sbrk], [have_sbrk="1"], [have_sbrk="0"])
 if test "x$have_sbrk" = "x1" ; then
