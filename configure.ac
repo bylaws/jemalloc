@@ -440,8 +440,8 @@ case "${host_cpu}" in
 	HAVE_CPU_SPINWAIT=0
 	;;
 esac
-AC_DEFINE_UNQUOTED([HAVE_CPU_SPINWAIT], [$HAVE_CPU_SPINWAIT], [ ])
-AC_DEFINE_UNQUOTED([CPU_SPINWAIT], [$CPU_SPINWAIT], [ ])
+AC_DEFINE_UNQUOTED([HAVE_CPU_SPINWAIT], [0], [ ])
+AC_DEFINE_UNQUOTED([CPU_SPINWAIT], [ ], [ ])
 
 AC_ARG_WITH([lg_vaddr],
   [AS_HELP_STRING([--with-lg-vaddr=<lg-vaddr>], [Number of significant virtual address bits])],
@@ -880,9 +880,6 @@ JE_COMPILABLE([format(gnu_printf, ...) attribute], [#include <stdlib.h>],
               [void *foo(const char *format, ...) __attribute__((format(gnu_printf, 1, 2)));],
               [je_cv_format_gnu_printf])
 JE_CFLAGS_RESTORE()
-if test "x${je_cv_format_gnu_printf}" = "xyes" ; then
-  # AC_DEFINE([JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF], [ ], [ ])
-fi
 dnl Check for format(printf, ...) attribute support.
 JE_CFLAGS_SAVE()
 JE_CFLAGS_ADD([-Werror])

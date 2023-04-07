@@ -6,8 +6,8 @@
  * public APIs to be prefixed.  This makes it possible, with some care, to use
  * multiple allocators simultaneously.
  */
-/* #undef JEMALLOC_PREFIX */
-/* #undef JEMALLOC_CPREFIX */
+#define JEMALLOC_PREFIX "je_"
+#define JEMALLOC_CPREFIX "JE_"
 
 /*
  * Define overrides for non-standard allocator-related functions if they are
@@ -20,8 +20,7 @@
 /* #undef JEMALLOC_OVERRIDE___LIBC_REALLOC */
 /* #undef JEMALLOC_OVERRIDE___LIBC_VALLOC */
 /* #undef JEMALLOC_OVERRIDE___POSIX_MEMALIGN */
-/* #undef JEMALLOC_OVERRIDE___MALLOC_USABLE_SIZE */
-/* #undef JEMALLOC_OVERRIDE___ALIGNED_ALLOC */
+
 /*
  * JEMALLOC_PRIVATE_NAMESPACE is used as a prefix for all library-private APIs.
  * For shared libraries, symbol visibility mechanisms prevent these symbols
@@ -34,7 +33,7 @@
  * Hyper-threaded CPUs may need a special instruction inside spin loops in
  * order to yield to another virtual CPU.
  */
-#define CPU_SPINWAIT
+#define CPU_SPINWAIT 
 /* 1 if CPU_SPINWAIT is defined, 0 otherwise. */
 #define HAVE_CPU_SPINWAIT 0
 
@@ -137,7 +136,7 @@
 /* #undef JEMALLOC_MUTEX_INIT_CB */
 
 /* Non-empty if the tls_model attribute is supported. */
-#define JEMALLOC_TLS_MODEL __attribute__((tls_model("initial-exec")))
+#define JEMALLOC_TLS_MODEL 
 
 /*
  * JEMALLOC_DEBUG enables assertions and other sanity checks, and disables
@@ -167,7 +166,7 @@
  * JEMALLOC_DSS enables use of sbrk(2) to allocate extents from the data storage
  * segment (DSS).
  */
-#define JEMALLOC_DSS 
+/* #undef JEMALLOC_DSS */
 
 /* Support memory filling (junk/zero). */
 #define JEMALLOC_FILL 
@@ -366,10 +365,10 @@
 #define LG_SIZEOF_INTMAX_T 3
 
 /* glibc malloc hooks (__malloc_hook, __realloc_hook, __free_hook). */
-#define JEMALLOC_GLIBC_MALLOC_HOOK
+/* #undef JEMALLOC_GLIBC_MALLOC_HOOK */
 
 /* glibc memalign hook. */
-#define JEMALLOC_GLIBC_MEMALIGN_HOOK
+/* #undef JEMALLOC_GLIBC_MEMALIGN_HOOK */
 
 /* pthread support */
 #define JEMALLOC_HAVE_PTHREAD 
@@ -401,7 +400,7 @@
 #define JEMALLOC_CONFIG_MALLOC_CONF ""
 
 /* If defined, jemalloc takes the malloc/free/etc. symbol names. */
-#define JEMALLOC_IS_MALLOC 1
+/* #undef JEMALLOC_IS_MALLOC */
 
 /*
  * Defined if strerror_r returns char * if _GNU_SOURCE is defined.

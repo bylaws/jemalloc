@@ -53,6 +53,7 @@ JEMALLOC_EXPORT void JEMALLOC_NOTHROW	jet_malloc_stats_print(
     const char *opts);
 JEMALLOC_EXPORT size_t JEMALLOC_NOTHROW	jet_malloc_usable_size(
     JEMALLOC_USABLE_SIZE_CONST void *ptr) JEMALLOC_CXX_THROW;
+JEMALLOC_EXPORT int JEMALLOC_NOTHROW jet_is_known_allocation(void* ptr) JEMALLOC_CXX_THROW;
 #ifdef JEMALLOC_HAVE_MALLOC_SIZE
 JEMALLOC_EXPORT size_t JEMALLOC_NOTHROW	jet_malloc_size(
     const void *ptr);

@@ -79,7 +79,7 @@ extern "C" {
 #  define je_malloc_stats_print je_malloc_stats_print
 #  define je_malloc_usable_size je_malloc_usable_size
 #  define je_mallocx je_mallocx
-#  define je_smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8 je_smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8
+#  define je_smallocx_bab515df730c3046945712b0aa4c50e74e4709a2 je_smallocx_bab515df730c3046945712b0aa4c50e74e4709a2
 #  define je_nallocx je_nallocx
 #  define je_posix_memalign je_posix_memalign
 #  define je_rallocx je_rallocx
@@ -97,13 +97,13 @@ extern "C" {
 #include <limits.h>
 #include <strings.h>
 
-#define JEMALLOC_VERSION "5.3.0-9-g136fb9e13279bb27efb0e2c0a6462bbd0ba060c8"
+#define JEMALLOC_VERSION "5.3.0-15-gbab515df730c3046945712b0aa4c50e74e4709a2"
 #define JEMALLOC_VERSION_MAJOR 5
 #define JEMALLOC_VERSION_MINOR 3
 #define JEMALLOC_VERSION_BUGFIX 0
-#define JEMALLOC_VERSION_NREV 9
-#define JEMALLOC_VERSION_GID "136fb9e13279bb27efb0e2c0a6462bbd0ba060c8"
-#define JEMALLOC_VERSION_GID_IDENT 136fb9e13279bb27efb0e2c0a6462bbd0ba060c8
+#define JEMALLOC_VERSION_NREV 15
+#define JEMALLOC_VERSION_GID "bab515df730c3046945712b0aa4c50e74e4709a2"
+#define JEMALLOC_VERSION_GID_IDENT bab515df730c3046945712b0aa4c50e74e4709a2
 
 #define MALLOCX_LG_ALIGN(la)	((int)(la))
 #if LG_SIZEOF_PTR == 2
@@ -417,7 +417,7 @@ struct extent_hooks_s {
 #  define malloc_stats_print je_malloc_stats_print
 #  define malloc_usable_size je_malloc_usable_size
 #  define mallocx je_mallocx
-#  define smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8 je_smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8
+#  define smallocx_bab515df730c3046945712b0aa4c50e74e4709a2 je_smallocx_bab515df730c3046945712b0aa4c50e74e4709a2
 #  define nallocx je_nallocx
 #  define posix_memalign je_posix_memalign
 #  define rallocx je_rallocx
@@ -451,7 +451,7 @@ struct extent_hooks_s {
 #  undef je_malloc_stats_print
 #  undef je_malloc_usable_size
 #  undef je_mallocx
-#  undef je_smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8
+#  undef je_smallocx_bab515df730c3046945712b0aa4c50e74e4709a2
 #  undef je_nallocx
 #  undef je_posix_memalign
 #  undef je_rallocx

@@ -3,36 +3,30 @@
 BEGIN {
   sym_prefix = ""
   split("\
-        aligned_alloc \
-        calloc \
-        dallocx \
-        free \
-        mallctl \
-        mallctlbymib \
-        mallctlnametomib \
-        malloc \
-        malloc_conf \
-        malloc_conf_2_conf_harder \
-        malloc_message \
-        malloc_stats_print \
-        malloc_usable_size \
-        mallocx \
-        smallocx_136fb9e13279bb27efb0e2c0a6462bbd0ba060c8 \
-        nallocx \
-        posix_memalign \
-        rallocx \
-        realloc \
-        sallocx \
-        sdallocx \
-        xallocx \
-        memalign \
-        valloc \
-        __libc_calloc \
-        __libc_free \
-        __libc_malloc \
-        __libc_memalign \
-        __libc_realloc \
-        __libc_valloc \
+        je_aligned_alloc \
+        je_calloc \
+        je_dallocx \
+        je_free \
+        je_mallctl \
+        je_mallctlbymib \
+        je_mallctlnametomib \
+        je_malloc \
+        je_malloc_conf \
+        je_malloc_conf_2_conf_harder \
+        je_malloc_message \
+        je_malloc_stats_print \
+        je_malloc_usable_size \
+        je_mallocx \
+        je_smallocx_bab515df730c3046945712b0aa4c50e74e4709a2 \
+        je_nallocx \
+        je_posix_memalign \
+        je_rallocx \
+        je_realloc \
+        je_sallocx \
+        je_sdallocx \
+        je_xallocx \
+        je_memalign \
+        je_valloc \
         pthread_create \
         ", exported_symbol_names)
   # Store exported symbol names as keys in exported_symbols.

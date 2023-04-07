@@ -4310,7 +4310,7 @@ label_done:
 }
 
 JEMALLOC_EXPORT int JEMALLOC_NOTHROW
-je_is_known_allocation(void* ptr) {
+is_known_allocation(void* ptr) {
 	int ret = 0;
 	tsdn_t *tsdn = tsdn_fetch();
 
