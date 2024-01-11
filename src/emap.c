@@ -10,6 +10,8 @@ enum emap_lock_result_e {
 };
 typedef enum emap_lock_result_e emap_lock_result_t;
 
+emap_t arena_emap_global;
+
 bool
 emap_init(emap_t *emap, base_t *base, bool zeroed) {
 	return rtree_new(&emap->rtree, base, zeroed);

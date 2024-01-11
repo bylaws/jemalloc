@@ -73,7 +73,7 @@
 /*
  * Defined if secure_getenv(3) is available.
  */
-#define JEMALLOC_HAVE_SECURE_GETENV 
+#undef JEMALLOC_HAVE_SECURE_GETENV 
 
 /*
  * Defined if issetugid(2) is available.
@@ -126,7 +126,7 @@
  * Among other things, it must be possible to initialize a mutex without
  * triggering allocation in order for threaded allocation to be safe.
  */
-#define JEMALLOC_THREADED_INIT 
+#undef JEMALLOC_THREADED_INIT 
 
 /*
  * Defined if the pthreads implementation defines
@@ -220,7 +220,7 @@
 #define JEMALLOC_RETAIN 
 
 /* TLS is used to map arenas and magazine caches to threads. */
-#define JEMALLOC_TLS 
+#undef JEMALLOC_TLS 
 
 /*
  * Used to mark unreachable code to quiet "end of non-void" compiler warnings.
@@ -272,16 +272,16 @@
  * JEMALLOC_SYSCTL_VM_OVERCOMMIT: FreeBSD's vm.overcommit sysctl.
  */
 /* #undef JEMALLOC_SYSCTL_VM_OVERCOMMIT */
-#define JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY 
+#undef JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY 
 
 /* Defined if madvise(2) is available. */
-#define JEMALLOC_HAVE_MADVISE 
+#undef JEMALLOC_HAVE_MADVISE 
 
 /*
  * Defined if transparent huge pages are supported via the MADV_[NO]HUGEPAGE
  * arguments to madvise(2).
  */
-#define JEMALLOC_HAVE_MADVISE_HUGE 
+#undef JEMALLOC_HAVE_MADVISE_HUGE 
 
 /*
  * Methods for purging unused pages differ between operating systems.
@@ -296,9 +296,9 @@
  *                                 MADV_FREE, though typically with higher
  *                                 system overhead.
  */
-#define JEMALLOC_PURGE_MADVISE_FREE 
-#define JEMALLOC_PURGE_MADVISE_DONTNEED 
-#define JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS 
+#undef JEMALLOC_PURGE_MADVISE_FREE 
+#undef JEMALLOC_PURGE_MADVISE_DONTNEED 
+#undef JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS 
 
 /* Defined if madvise(2) is available but MADV_FREE is not (x86 Linux only). */
 /* #undef JEMALLOC_DEFINE_MADVISE_FREE */
@@ -306,7 +306,7 @@
 /*
  * Defined if MADV_DO[NT]DUMP is supported as an argument to madvise.
  */
-#define JEMALLOC_MADVISE_DONTDUMP 
+#undef JEMALLOC_MADVISE_DONTDUMP 
 
 /*
  * Defined if MADV_[NO]CORE is supported as an argument to madvise.
@@ -314,7 +314,7 @@
 /* #undef JEMALLOC_MADVISE_NOCORE */
 
 /* Defined if mprotect(2) is available. */
-#define JEMALLOC_HAVE_MPROTECT 
+#undef JEMALLOC_HAVE_MPROTECT 
 
 /*
  * Defined if transparent huge pages (THPs) are supported via the
@@ -356,7 +356,7 @@
 #define LG_SIZEOF_INT 2
 
 /* sizeof(long) == 2^LG_SIZEOF_LONG. */
-#define LG_SIZEOF_LONG 3
+#define LG_SIZEOF_LONG 2
 
 /* sizeof(long long) == 2^LG_SIZEOF_LONG_LONG. */
 #define LG_SIZEOF_LONG_LONG 3
@@ -371,10 +371,10 @@
 /* #undef JEMALLOC_GLIBC_MEMALIGN_HOOK */
 
 /* pthread support */
-#define JEMALLOC_HAVE_PTHREAD 
+// #define JEMALLOC_HAVE_PTHREAD 
 
 /* dlsym() support */
-#define JEMALLOC_HAVE_DLSYM 
+// #define JEMALLOC_HAVE_DLSYM 
 
 /* Adaptive mutex support in pthreads. */
 #define JEMALLOC_HAVE_PTHREAD_MUTEX_ADAPTIVE_NP 
@@ -388,7 +388,7 @@
 /*
  * If defined, all the features necessary for background threads are present.
  */
-#define JEMALLOC_BACKGROUND_THREAD 
+#undef JEMALLOC_BACKGROUND_THREAD 
 
 /*
  * If defined, jemalloc symbols are not exported (doesn't work when

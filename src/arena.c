@@ -36,7 +36,6 @@ ssize_t opt_muzzy_decay_ms = MUZZY_DECAY_MS_DEFAULT;
 static atomic_zd_t dirty_decay_ms_default;
 static atomic_zd_t muzzy_decay_ms_default;
 
-emap_t arena_emap_global;
 pa_central_t arena_pa_central_global;
 
 div_info_t arena_binind_div_info[SC_NBINS];

@@ -32,8 +32,7 @@ const char *metadata_thp_mode_names[] = {
 
 static inline bool
 metadata_thp_madvise(void) {
-	return (metadata_thp_enabled() &&
-	    (init_system_thp_mode == thp_mode_default));
+	return false;
 }
 
 static void *
@@ -357,15 +356,14 @@ base_new(tsdn_t *tsdn, unsigned ind, const extent_hooks_t *extent_hooks,
 	    (extent_hooks_t *)extent_hooks :
 	    (extent_hooks_t *)&ehooks_default_extent_hooks, ind);
 
-	base_block_t *block = base_block_alloc(tsdn, NULL, &fake_ehooks, ind,
-	    &pind_last, &extent_sn_next, sizeof(base_t), QUANTUM);
-	if (block == NULL) {
-		return NULL;
-	}
 
 	size_t gap_size;
 	size_t base_alignment = CACHELINE;
 	size_t base_size = ALIGNMENT_CEILING(sizeof(base_t), base_alignment);
+    b0get();
+	base_block_t *block = base_block_alloc(tsdn, NULL, &fake_ehooks, ind,
+	    &pind_last, &extent_sn_next, sizeof(base_t), QUANTUM);
+
 	base_t *base = (base_t *)base_extent_bump_alloc_helper(&block->edata,
 	    &gap_size, base_size, base_alignment);
 	ehooks_init(&base->ehooks, (extent_hooks_t *)extent_hooks, ind);
