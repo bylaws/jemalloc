@@ -49,8 +49,10 @@ typedef void* (*mmap_hook_type)(
 	int fd, off_t offset);
 typedef int (*munmap_hook_type)(void *addr, size_t length);
 
+#ifndef _WIN32
 JEMALLOC_EXPORT mmap_hook_type __mmap_hook = mmap;
 JEMALLOC_EXPORT munmap_hook_type __munmap_hook = munmap;
+#endif
 
 /* Runtime support for lazy purge. Irrelevant when !pages_can_purge_lazy. */
 static bool pages_can_purge_lazy_runtime = true;
