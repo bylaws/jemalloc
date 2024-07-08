@@ -133,7 +133,7 @@ os_pages_map(void *addr, size_t size, size_t alignment, bool *commit) {
 	 * If VirtualAlloc can't allocate at the given address when one is
 	 * given, it fails and returns NULL.
 	 */
-	ret = VirtualAlloc(addr, size, MEM_RESERVE | (*commit ? MEM_COMMIT : 0),
+	ret = VirtualAlloc(addr, size, MEM_RESERVE | (*commit ? MEM_COMMIT : 0) | MEM_TOP_DOWN,
 	    PAGE_READWRITE);
 #else
 	/*
